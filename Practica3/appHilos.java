@@ -1,4 +1,6 @@
-
+package client;
+import java.io.*;
+import java.net.*;
 public class appHilos {
 
     /**
@@ -6,20 +8,35 @@ public class appHilos {
      */
     public static void main(String[] args) {
         
-        String tipo = args[0].toLowerCase();
-        int num1 = Integer.parseInt(args[1]);
-        int num2 = Integer.parseInt(args[2]);
+        String cadena;
+        String[] palabras;
+         try {  
+        
+            while(true){
+            //EJERCICIO: el bucle infinito:
+                BufferedReader in =
+                new BufferedReader(new InputStreamReader(System.in));//EJERCICIO: Leer de teclado leo del teclado 
+                cadena=in.readLine();
+                palabras = cadena.split(" ");
+                     //EJERCICIO: Invocar el stub
+                //EJERCICIO: Imprimir por pantalla
+                if(palabras[0].equals("suma")){
+                    operacion suma = new operacion(palabras[1],palabras[2],"suma");
+                    suma.start();
+                }else if(palabras[0].equals("multiplicacion")){
+                    operacion multi = new operacion(palabras[1],palabras[2],"multiplicacion");
+                    multi.start();
+                }else if(palabras[0].equals("division")){
+                    operacion div = new operacion(palabras[1],palabras[2],"division");
+                    div.start();
+                }
 
-        if(tipo.equals("suma")){
-            operacion suma = new operacion(num1,num2,"suma");
-            suma.start();
-        }else if(tipo.equals("multiplicacion")){
-            operacion multi = new operacion(num1,num2,"multiplicacion");
-            multi.start();
-        }else if(tipo.equals("division")){
-            operacion div = new operacion(num1,num2,"division");
-            div.start();
+            }
+        } catch (IOException e) {
+            System.err.println("Termino de correr appHilos");
         }
+
+        
         
     
     
