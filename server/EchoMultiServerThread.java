@@ -3,8 +3,8 @@ package server;
 import java.net.*;
 import java.io.*;
 
-public class EchoMultiServerThread implements Runnable{
-    private static EchoObjectSkeleton eo = new EchoObjectSkeleton();
+public class EchoMultiServerThread implements Runnable{ //implementa la interfaz runnable
+    private static EchoObjectSkeleton eo = new EchoObjectSkeleton();//instancia del skeleton
     private Socket clientSocket = null;
     private String myURL = "localhost";
     private BufferedReader is = null;
